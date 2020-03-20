@@ -1,6 +1,7 @@
 package edu.berkeley.aep;
 
 public class Bester<T extends Bestable> {
+
     private final T[] quantities;
 
     public Bester(T... quantities) {

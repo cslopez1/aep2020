@@ -11,8 +11,8 @@ import static org.junit.Assert.assertFalse;
 public class ChanceTest {
     @Test
     public void shouldUnderstandThatTheProbabilityOfADieThrowIsNotEqualToTheProbabilityOfACoinToss() {
-        var dieThrow = new Chance(1/6);
-        var coinToss = new Chance(0.5);
+        Chance dieThrow = new Chance(1/6);
+        Chance coinToss = new Chance(0.5);
         assertEquals(coinToss, coinToss);
         assertFalse(dieThrow.equals(coinToss));
         assertEquals(coinToss, new Chance(0.5));
@@ -20,19 +20,19 @@ public class ChanceTest {
 
     @Test
     public void notShouldProduceTheComplementForADieThrow() {
-        var dieThrow = new Chance(1d/6d);
+        Chance dieThrow = new Chance(1d/6d);
         assertEquals(new Chance(5d/6d), dieThrow.not());
     }
 
     @Test
     public void probabilityOfTwoHeadsShouldBeOneQuarter() {
-        var coinToss = new Chance(0.5);
+        Chance coinToss = new Chance(0.5);
         assertEquals(new Chance(0.25), coinToss.and(coinToss));
     }
 
     @Test
     public void probabilityOfHeadsForEitherOfTwoCoinsShouldBeThreeQuarters() {
-        var coinToss = new Chance(0.5);
+        Chance coinToss = new Chance(0.5);
         assertEquals(new Chance(0.75), coinToss.or(coinToss));
     }
 
