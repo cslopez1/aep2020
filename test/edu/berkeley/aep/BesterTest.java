@@ -14,7 +14,7 @@ public class BesterTest {
 
     @Test
     public void shouldChooseBestChance() {
-        Bester bester = new Bester<>(new Chance(0.5), new Chance(0.25));
+        Bester bester = new Bester(new Chance(0.5), new Chance(0.25));
         assertEquals(new Chance(0.5), bester.best());
     }
 
