@@ -14,7 +14,7 @@ public class Golfers {
     private final List<Integer> golfers;
 
     public Golfers(Integer[] golfers) {
-        this.golfers = new ArrayList(Arrays.asList(golfers));
+        this.golfers = new ArrayList<>(Arrays.asList(golfers));
         for (Integer golfer : golfers) {
             if (golfer > 4) {
                 throw new IllegalArgumentException();
