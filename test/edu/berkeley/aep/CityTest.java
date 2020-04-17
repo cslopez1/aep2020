@@ -20,9 +20,9 @@ public class CityTest {
         cityA.addChild(cityF);
         cityB.addChild(cityA);
         cityB.addChild(cityC);
-        cityC.addChild(cityE);
-        cityC.addChild(cityE);
         cityC.addChild(cityD);
+        cityC.addChild(cityE);
+        cityC.addChild(cityE);
         cityD.addChild(cityE);
         cityE.addChild(cityB);
     }
@@ -68,13 +68,8 @@ public class CityTest {
     }
 
     @Test
-    public void hToEShouldReturn3() {
-        assertEquals(3, cityH.hopsTo(cityE));
-    }
-
-    @Test
     public void hToGShouldReturnNegative1() {
-        assertEquals(-1, cityH.hopsTo(cityG));
+        assertEquals(City.UNREACHABLE, cityH.hopsTo(cityG));
     }
 
     @Test
@@ -85,5 +80,15 @@ public class CityTest {
     @Test
     public void hToHShouldReturn0() {
         assertEquals(0, cityH.hopsTo(cityH));
+    }
+
+    @Test
+    public void bToEShouldReturn2() {
+        assertEquals(2, cityB.hopsTo(cityE));
+    }
+
+    @Test
+    public void cToBShouldReturn2() {
+        assertEquals(2, cityC.hopsTo(cityB));
     }
 }

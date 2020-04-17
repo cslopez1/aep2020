@@ -2,11 +2,13 @@ package edu.berkeley.aep;
 
 import java.util.*;
 
+import static java.util.Collections.min;
+
 // Understands if a path can be created between two city nodes in a directed graph.
 public class City {
 
     private final List<City> adjacent = new ArrayList<>();
-    public final static int UNREACHABLE = -1;
+    public final static int UNREACHABLE = Integer.MAX_VALUE;
 
 
     public boolean canReach(City destination) {
@@ -23,11 +25,14 @@ public class City {
         if (visited.contains(this)) return UNREACHABLE;
         visited.add(this);
 
+        int champion = UNREACHABLE;
         for (City node : adjacent) {
-            int hops = node.hopCounter(destination, visited);
-            if (hops != UNREACHABLE) return hops + 1;
+            int hops = node.hopCounter(destination, new HashSet<>(visited));
+            if (hops != UNREACHABLE && hops <= champion) {
+                champion = hops + 1;
+            }
         }
-        return UNREACHABLE;
+        return champion;
     }
 
     public void addChild(City other) {
