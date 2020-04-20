@@ -16,15 +16,25 @@ public class CityTest {
     private City cityH = new City();
 
     public CityTest() {
-        cityH.addChild(cityB);
-        cityA.addChild(cityF);
-        cityB.addChild(cityA);
-        cityB.addChild(cityC);
-        cityC.addChild(cityD);
-        cityC.addChild(cityE);
-        cityC.addChild(cityE);
-        cityD.addChild(cityE);
-        cityE.addChild(cityB);
+        cityH.addChild(new Route(cityB, 600));
+        cityA.addChild(new Route(cityF, 100));
+        cityB.addChild(new Route(cityA, 200));
+        cityB.addChild(new Route(cityC, 50));
+        cityC.addChild(new Route(cityE, 400));
+        cityC.addChild(new Route(cityE, 200));
+        cityC.addChild(new Route(cityD, 50));
+        cityD.addChild(new Route(cityE, 100));
+        cityE.addChild(new Route(cityB, 500));
+
+//        cityH.addChild(cityB, 600);
+//        cityA.addChild(cityF, 100);
+//        cityB.addChild(cityA, 200);
+//        cityB.addChild(cityC, 50);
+//        cityC.addChild(cityE, 400);
+//        cityC.addChild(cityE, 200);
+//        cityC.addChild(cityD, 50);
+//        cityD.addChild(cityE, 100);
+//        cityE.addChild(cityB, 500);
     }
 
     @Test
@@ -91,4 +101,34 @@ public class CityTest {
     public void cToBShouldReturn2() {
         assertEquals(2, cityC.hopsTo(cityB));
     }
+
+    @Test
+    public void bToECostShouldReturn200() {
+        assertEquals(200, cityB.costTo(cityE));
+    }
+
+    @Test
+    public void CToBCostShouldReturn650() {
+        assertEquals(650, cityC.costTo(cityB));
+    }
+
+//    @Test
+//    public void hToHCostShouldReturn0() {
+//        assertEquals(0, cityH.costTo(cityH));
+//    }
+//
+//    @Test
+//    public void hToFCostShouldReturn900() {
+//        assertEquals(900, cityH.costTo(cityF));
+//    }
+//
+//    @Test
+//    public void bToECostShouldReturn200() {
+//        assertEquals(200, cityB.costTo(cityE));
+//    }
+//
+//    @Test
+//    public void CToBCostShouldReturn650() {
+//        assertEquals(650, cityC.costTo(cityB));
+//    }
 }
